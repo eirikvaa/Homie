@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("com.apollographql.apollo3").version("3.1.0")
 }
 
 kotlin {
@@ -17,7 +18,11 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                api("com.apollographql.apollo3:apollo-runtime:3.1.0")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
@@ -61,3 +66,7 @@ android {
     }
 }
 
+// Configure the Apollo GraphQL client.
+apollo {
+    packageName.set("com.homies.homie")
+}
