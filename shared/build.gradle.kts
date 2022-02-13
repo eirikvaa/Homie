@@ -1,15 +1,16 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("com.apollographql.apollo3").version("3.1.0")
 }
 
 kotlin {
     android()
-    
+
     listOf(
         iosX64(),
         iosArm64(),
-        //iosSimulatorArm64() sure all ios dependencies support this target
+        // iosSimulatorArm64() sure all ios dependencies support this target
     ).forEach {
         it.binaries.framework {
             baseName = "Shared"
@@ -17,7 +18,11 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                api("com.apollographql.apollo3:apollo-runtime:3.1.0")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
@@ -33,21 +38,21 @@ kotlin {
         }
         val iosX64Main by getting
         val iosArm64Main by getting
-        //val iosSimulatorArm64Main by getting
+        // val iosSimulatorArm64Main by getting
         val iosMain by creating {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
-            //iosSimulatorArm64Main.dependsOn(this)
+            // iosSimulatorArm64Main.dependsOn(this)
         }
         val iosX64Test by getting
         val iosArm64Test by getting
-        //val iosSimulatorArm64Test by getting
+        // val iosSimulatorArm64Test by getting
         val iosTest by creating {
             dependsOn(commonTest)
             iosX64Test.dependsOn(this)
             iosArm64Test.dependsOn(this)
-            //iosSimulatorArm64Test.dependsOn(this)
+            // iosSimulatorArm64Test.dependsOn(this)
         }
     }
 }
@@ -59,4 +64,9 @@ android {
         minSdk = 30
         targetSdk = 31
     }
+}
+
+// Configure the Apollo GraphQL client.
+apollo {
+    packageName.set("com.homies.homie")
 }
