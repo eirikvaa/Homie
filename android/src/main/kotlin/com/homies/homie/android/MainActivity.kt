@@ -1,20 +1,27 @@
 package com.homies.homie.android
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.homies.homie.Greeting
-import android.widget.TextView
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 
-fun greet(): String {
-    return Greeting().greeting()
-}
-
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val tv: TextView = findViewById(R.id.text_view)
-        tv.text = greet()
+        setContent {
+            MaterialTheme {
+                Surface(color = MaterialTheme.colors.background) {
+                    Hooomie()
+                }
+            }
+        }
     }
+}
+
+@Composable
+fun Hooomie() {
+    Text(text = "First compose component :-D")
 }
