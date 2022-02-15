@@ -1,0 +1,22 @@
+{
+  "name": "Entur GraphQL Api",
+  "schemaPath": "Schema.graphqls",
+  "extensions": {
+    "endpoints": {
+      "Journey Planner v3": {
+        "url": "https://api.entur.io/journey-planner/v3/graphql",
+        "headers": {
+          "user-agent": "Kotlin GraphQL"
+        },
+        "introspect": false
+      },
+      "Geocoder v1": {
+        "url": "https://api.entur.io/geocoder/v1",
+        "headers": {
+          "user-agent": "Kotlin GraphQL"
+        },
+        "introspect": false
+      }
+    }
+  }
+}

@@ -89,4 +89,7 @@ android {
 // Configure the Apollo GraphQL client.
 apollo {
     packageName.set("com.homies.homie")
+
+    // We don't want to expose API models, so make them internal.
+    generateAsInternal.set(true)
 }
