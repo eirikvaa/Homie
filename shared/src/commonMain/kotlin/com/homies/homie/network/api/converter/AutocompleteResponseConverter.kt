@@ -12,6 +12,7 @@ internal fun AutocompleteResponse.asLocations(): List<Location> = features.map {
     )
 }
 
+// This extension is only used in this file, so let's keep it here for now.
 internal fun List<Float>.asCoordinates(): Coordinates? {
     // We need a latitude and a longitude, nothing more or less.
     if (size != 2) {
