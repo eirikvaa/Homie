@@ -7,5 +7,5 @@ internal fun Location.toApiModel(): com.homies.homie.type.Location =
     com.homies.homie.type.Location(
         name = Optional.presentIfNotNull(name),
         place = Optional.presentIfNotNull(place),
-        coordinates = Optional.presentIfNotNull(coordinates?.toApiModel())
+        coordinates = Optional.presentIfNotNull(coordinate?.toApiModel())
     )

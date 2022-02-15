@@ -5,5 +5,5 @@ data class Location(
     val name: String?,
     // Looks something like "NSR:StopPlace:58211"
     val place: String?,
-    val coordinates: Coordinates?
+    val coordinate: Coordinate?
 )
