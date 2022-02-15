@@ -8,6 +8,9 @@ internal fun AutocompleteResponse.asLocations(): List<Location> = features.map {
     Location(
         name = it.properties.name,
         place = it.properties.id,
-        coordinate = Coordinate(values = it.geometry.coordinates)
+        coordinate = Coordinate(
+            longitude = it.geometry.coordinates[1],
+            latitude = it.geometry.coordinates[0]
+        )
     )
 }
