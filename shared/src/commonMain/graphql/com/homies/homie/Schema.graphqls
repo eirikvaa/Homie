@@ -1,3 +1,31 @@
 type Query {
-    implementMe: String!
+    trip(from: Location!, to: Location!): Trip
+}
+
+type Trip {
+    fromPlace: Place
+    toPlace: Place
+    tripPatterns: [TripPattern]
+}
+
+type Place {
+    name: String
+    latitude: Float!
+    longitude: Float!
+}
+
+type TripPattern {
+    expectedStartTime: String
+    expectedEndTime: String
+}
+
+input Location {
+    name: String
+    place: String
+    coordinates: InputCoordinates
+}
+
+input InputCoordinates {
+    latitude: Float!
+    longitude: Float!
 }

@@ -1,0 +1,7 @@
+query getTrip($from: Location!, $to: Location!) {
+    trip(from: $from, to: $to) {
+        tripPatterns {
+            expectedStartTime
+        }
+    }
+}
