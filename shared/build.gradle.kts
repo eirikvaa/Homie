@@ -1,5 +1,6 @@
 plugins {
     kotlin("multiplatform")
+    kotlin("plugin.serialization")
     id("com.android.library")
     id("com.apollographql.apollo3").version("3.1.0")
 }
@@ -20,7 +21,13 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api("com.apollographql.apollo3:apollo-runtime:3.1.0")
+                implementation("com.apollographql.apollo3:apollo-runtime:3.1.0")
+                implementation("io.ktor:ktor-client-core:2.0.0-beta-1")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.3.1")
+                implementation("io.ktor:ktor-client-content-negotiation:2.0.0-beta-1")
+                implementation("io.ktor:ktor-client-serialization:2.0.0-beta-1")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.0-beta-1")
             }
         }
         val commonTest by getting {
@@ -29,7 +36,11 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation("io.ktor:ktor-client-android:2.0.0-beta-1")
+            }
+        }
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
@@ -44,6 +55,15 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             // iosSimulatorArm64Main.dependsOn(this)
+
+            dependencies {
+                implementation("io.ktor:ktor-client-ios:2.0.0-beta-1")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt") {
+                    version {
+                        strictly("1.6.0-native-mt")
+                    }
+                }
+            }
         }
         val iosX64Test by getting
         val iosArm64Test by getting
