@@ -1,0 +1,51 @@
+name: Tests
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ios-tests:
+    name: Test iOS
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ios
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache gradle
+        uses: actions/cache@v2.1.7
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 15
+      - name: Resolve Ruby gems for macOS Big Sur
+        # Darwin-20 is the UNIX components used in macOS Catalina.
+        # Apparently GitHub Actions doesn't support macOS Monterey yet.
+        # It does run macOS 11.6.3 which is macOS Big Sur, but not adding the
+        # below line causes bundle to complain that it should be added.
+        # Need to understand why this is a fix.
+        run: bundle lock --add-platform x86_64-darwin-19
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
+        with:
+          bundler-cache: true
+          working-directory: ios
+      - name: Run iOS tests
+        run: bundle exec fastlane tests
+  common-and-android-test:
+    name: Test common module and Android
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 15
+      - name: Test common module and Android
+        run: sh gradlew --no-daemon --stacktrace testReleaseUnitTest
