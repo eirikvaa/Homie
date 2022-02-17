@@ -5,6 +5,7 @@ plugins {
     id("com.apollographql.apollo3") version "3.1.0"
     id("io.gitlab.arturbosch.detekt") version "1.19.0"
     id("org.jlleitschuh.gradle.ktlint") version "10.1.0"
+    id("com.rickclephas.kmp.nativecoroutines") version "0.11.3"
 }
 
 kotlin {
