@@ -24,8 +24,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 15
-      - name: Resolve Ruby gems for macOS Big Sur
-        # Darwin-20 is the UNIX components used in macOS Catalina.
+      - name: Resolve Ruby gems for macOS Catalina.
+        # Darwin v19 is the UNIX components used in macOS Catalina.
         # Apparently GitHub Actions doesn't support macOS Monterey yet.
         # It does run macOS 11.6.3 which is macOS Big Sur, but not adding the
         # below line causes bundle to complain that it should be added.
