@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "KMPNativeCoroutines",
+        "repositoryURL": "https://github.com/rickclephas/KMP-NativeCoroutines",
+        "state": {
+          "branch": null,
+          "revision": "f2738f9b4bd4cecae5a6ef972da16c2571b53a72",
+          "version": "0.11.3"
+        }
+      },
+      {
+        "package": "RxSwift",
+        "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "b4307ba0b6425c0ba4178e138799946c3da594f8",
+          "version": "6.5.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
