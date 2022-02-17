@@ -48,6 +48,8 @@ dependencies {
     implementation("androidx.compose.material:material:$composeVersion")
     implementation("androidx.compose.material:material-icons-core:$composeVersion")
     implementation("androidx.compose.material:material-icons-extended:$composeVersion")
+    implementation("com.google.android.gms:play-services-location:19.0.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
 
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.0")
 }
