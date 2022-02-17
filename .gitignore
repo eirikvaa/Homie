@@ -26,3 +26,16 @@ xcuserdata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
+
+### Fastlane ###
+# Fastlane specific
+**/fastlane/report.xml
+
+# Deliver temporary files
+**/fastlane/Preview.html
+
+# Snapshot generated screenshots
+**/fastlane/screenshots
+
+# Scan temporary files
+**/fastlane/test_output

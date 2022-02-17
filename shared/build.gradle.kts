@@ -2,7 +2,9 @@ plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization")
     id("com.android.library")
-    id("com.apollographql.apollo3").version("3.1.0")
+    id("com.apollographql.apollo3") version "3.1.0"
+    id("io.gitlab.arturbosch.detekt") version "1.19.0"
+    id("org.jlleitschuh.gradle.ktlint") version "10.1.0"
 }
 
 kotlin {
@@ -92,4 +94,19 @@ apollo {
 
     // We don't want to expose API models, so make them internal.
     generateAsInternal.set(true)
+}
+
+detekt {
+    toolVersion = "1.19.0"
+    source = files(projectDir)
+    config = files("../detekt.yml")
+}
+
+ktlint {
+    version.set("0.44.0")
+    verbose.set(true)
+    outputToConsole.set(true)
+    filter {
+        exclude("**/shared/build/**")
+    }
 }
