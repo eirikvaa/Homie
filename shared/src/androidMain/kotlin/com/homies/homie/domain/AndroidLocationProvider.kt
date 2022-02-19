@@ -2,7 +2,6 @@ package com.homies.homie.domain
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Looper
 import androidx.core.app.ActivityCompat
@@ -10,6 +9,7 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import com.homies.homie.Platform
 import com.homies.homie.domain.model.Coordinate
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.trySendBlocking
@@ -39,24 +39,23 @@ actual class AndroidLocationProvider (private val context: Context) : LocationPr
                 interval = LOCATION_UPDATE_INTERVAL
                 priority = LocationRequest.PRIORITY_HIGH_ACCURACY
             }
-            LocationServices.getFusedLocationProviderClient(context).requestLocationUpdates(
                 locationRequest,
                 locationCallback,
                 Looper.getMainLooper()
             )
+            LocationServices.getFusedLocationProviderClient(Platform.context)
 
             awaitClose {
-                LocationServices.getFusedLocationProviderClient(context)
+                LocationServices.getFusedLocationProviderClient(Platform.context)
                     .removeLocationUpdates(locationCallback)
             }
         }
     }
 
     private fun locationPermissionGranted() = ActivityCompat.checkSelfPermission(
-        context,
-        Manifest.permission.ACCESS_FINE_LOCATION
+        Platform.context,        Manifest.permission.ACCESS_FINE_LOCATION
     ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-        context,
+        Platform.context,
         Manifest.permission.ACCESS_COARSE_LOCATION
     ) == PackageManager.PERMISSION_GRANTED
 
