@@ -7,10 +7,14 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import com.homies.homie.Platform
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Platform.context = this
+
         setContent {
             MaterialTheme {
                 Surface(color = MaterialTheme.colors.background) {

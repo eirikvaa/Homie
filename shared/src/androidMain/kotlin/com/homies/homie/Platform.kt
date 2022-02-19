@@ -1,5 +1,12 @@
 package com.homies.homie
 
-actual class Platform actual constructor() {
-    actual val platform: String = "Android ${android.os.Build.VERSION.SDK_INT}"
+import android.content.Context
+
+/**
+ * The actual [Platform] class for Android platform-specific dependencies.
+ * Holds a reference to the app [Context], that can be used from the Kotlin/JVM code.
+ */
+@Suppress("StaticFieldLeak")
+actual object Platform {
+    lateinit var context: Context
 }
