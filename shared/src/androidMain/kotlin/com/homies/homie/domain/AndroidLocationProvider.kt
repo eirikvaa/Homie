@@ -17,7 +17,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
 actual class AndroidLocationProvider (private val context: Context) : LocationProvider {
-
     @SuppressLint("MissingPermission")
     override suspend fun getLocationUpdates(): Flow<Coordinate> {
         return callbackFlow {
@@ -26,6 +25,7 @@ actual class AndroidLocationProvider (private val context: Context) : LocationPr
             val locationCallback = object : LocationCallback() {
                 override fun onLocationResult(p0: LocationResult) {
                     super.onLocationResult(p0)
+
                     trySendBlocking(
                         Coordinate(
                             p0.lastLocation.longitude.toFloat(),
@@ -53,7 +53,8 @@ actual class AndroidLocationProvider (private val context: Context) : LocationPr
     }
 
     private fun locationPermissionGranted() = ActivityCompat.checkSelfPermission(
-        Platform.context,        Manifest.permission.ACCESS_FINE_LOCATION
+        Platform.context,
+        Manifest.permission.ACCESS_FINE_LOCATION
     ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
         Platform.context,
         Manifest.permission.ACCESS_COARSE_LOCATION
