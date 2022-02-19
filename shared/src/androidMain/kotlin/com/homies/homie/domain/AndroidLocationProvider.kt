@@ -1,4 +1,5 @@
-package com.homies.homie.android
+package com.homies.homie.domain
+
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -10,14 +11,13 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
-import com.homies.homie.domain.LocationProvider
 import com.homies.homie.domain.model.Coordinate
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
-class AndroidLocationProvider(private val context: Context) : LocationProvider {
+actual class AndroidLocationProvider (private val context: Context) : LocationProvider {
 
     @SuppressLint("MissingPermission")
     override suspend fun getLocationUpdates(): Flow<Coordinate> {
