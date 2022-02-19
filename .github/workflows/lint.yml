@@ -1,0 +1,35 @@
+name: Lint
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  swiftlint:
+    name: Lint Swift
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: SwiftLint
+        uses: norio-nomura/action-swiftlint@3.2.1
+        env:
+          WORKING_DIRECTORY: ios
+  detekt:
+    name: Lint Kotlin
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Detekt
+        uses: natiginfo/action-detekt-all@1.19.0
+        with:
+          args: --config detekt.yml
+  android:
+    name: Lint Android
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: yutailang0119/action-android-lint@v2
+        with:
+          report-path: build/reports/*.xml
+        env:
+          WORKING_DIRECTORY: android
