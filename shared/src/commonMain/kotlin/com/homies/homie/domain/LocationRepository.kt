@@ -7,7 +7,7 @@ interface LocationRepository {
     suspend fun getLocationUpdates(): Flow<Coordinate>
 }
 
-class LocationRepositoryImpl(private val locationProvider: LocationProvider) : LocationRepository{
+class LocationRepositoryImpl(private val locationProvider: LocationProvider) : LocationRepository {
     override suspend fun getLocationUpdates(): Flow<Coordinate> =
         locationProvider.getLocationUpdates()
 }

@@ -1,3 +1,4 @@
+// ktlint-disable filename
 package com.homies.homie.domain
 
 import com.homies.homie.domain.model.Coordinate

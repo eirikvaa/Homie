@@ -1,6 +1,5 @@
 package com.homies.homie.domain
 
-
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
@@ -27,7 +26,6 @@ actual class AndroidLocationProvider (private val context: Context) : LocationPr
             val locationCallback = object : LocationCallback() {
                 override fun onLocationResult(p0: LocationResult) {
                     super.onLocationResult(p0)
-
                     trySendBlocking(
                         Coordinate(
                             p0.lastLocation.longitude.toFloat(),
