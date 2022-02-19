@@ -16,9 +16,9 @@ import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
-actual class AndroidLocationProvider (private val context: Context) : LocationProvider {
+actual interface LocationProvider {
     @SuppressLint("MissingPermission")
-    override suspend fun getLocationUpdates(): Flow<Coordinate> {
+    actual suspend fun getLocationUpdates(): Flow<Coordinate> {
         return callbackFlow {
             if (!locationPermissionGranted()) this.close()
 
@@ -39,11 +39,12 @@ actual class AndroidLocationProvider (private val context: Context) : LocationPr
                 interval = LOCATION_UPDATE_INTERVAL
                 priority = LocationRequest.PRIORITY_HIGH_ACCURACY
             }
-                locationRequest,
-                locationCallback,
-                Looper.getMainLooper()
-            )
             LocationServices.getFusedLocationProviderClient(Platform.context)
+                .requestLocationUpdates(
+                    locationRequest,
+                    locationCallback,
+                    Looper.getMainLooper()
+                )
 
             awaitClose {
                 LocationServices.getFusedLocationProviderClient(Platform.context)
