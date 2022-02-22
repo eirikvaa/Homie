@@ -69,4 +69,3 @@ class AndroidLocationProvider(
         const val LOCATION_UPDATE_INTERVAL: Long = 10_000
     }
 }
-
