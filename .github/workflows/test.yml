@@ -12,7 +12,7 @@ jobs:
       run:
         working-directory: ios
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Cache gradle
         uses: actions/cache@v2.1.7
         with:
@@ -29,6 +29,7 @@ jobs:
         with:
           bundler-cache: true
           working-directory: ios
+      - run: bundle install
       - name: Run iOS tests
         run: bundle exec fastlane tests
   common-and-android-test:
