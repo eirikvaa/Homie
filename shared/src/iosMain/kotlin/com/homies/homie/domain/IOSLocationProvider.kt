@@ -9,6 +9,7 @@ actual interface LocationProvider {
 }
 
 class IOSLocationProvider : LocationProvider {
+    @Suppress("NotImplementedDeclaration")
     override suspend fun getLocationUpdates(): Flow<Coordinate> {
         TODO("Not yet implemented")
     }
