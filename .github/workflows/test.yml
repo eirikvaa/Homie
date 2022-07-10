@@ -24,12 +24,12 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 15
+      - run: bundle lock --add-platform x86_64-darwin-19
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
           working-directory: ios
-      - run: bundle install
       - name: Run iOS tests
         run: bundle exec fastlane tests
   common-and-android-test:
