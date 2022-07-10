@@ -7,7 +7,7 @@ on:
 jobs:
   ios-tests:
     name: Test iOS
-    runs-on: macos-latest
+    runs-on: macos-12
     defaults:
       run:
         working-directory: ios
@@ -24,15 +24,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 15
-      - name: Resolve Ruby gems for macOS Catalina.
-        # Darwin v19 is the UNIX components used in macOS Catalina.
-        # Apparently GitHub Actions doesn't support macOS Monterey yet.
-        # It does run macOS 11.6.3 which is macOS Big Sur, but not adding the
-        # below line causes bundle to complain that it should be added.
-        # Need to understand why this is a fix.
-        run: bundle lock --add-platform x86_64-darwin-19
       - name: Set up Ruby
-        uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
+        uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
           working-directory: ios
