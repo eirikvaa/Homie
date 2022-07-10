@@ -12,6 +12,7 @@
 		2152FB042600AC8F00CF470E /* HomieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* HomieApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		E5437ECF27BD6DC9001F42CA /* HomieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5437ECE27BD6DC9001F42CA /* HomieTests.swift */; };
+		E59DF181287A4A660060AABD /* IosLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59DF180287A4A660060AABD /* IosLocationProvider.swift */; };
 		E5AB257F27BEDF8C00FD80A0 /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = E5AB257E27BEDF8C00FD80A0 /* KMPNativeCoroutinesAsync */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5437ECC27BD6DC9001F42CA /* HomieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5437ECE27BD6DC9001F42CA /* HomieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomieTests.swift; sourceTree = "<group>"; };
+		E59DF180287A4A660060AABD /* IosLocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IosLocationProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF82242A565900829871 /* ContentView.swift */,
+				E59DF180287A4A660060AABD /* IosLocationProvider.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* HomieApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
@@ -250,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E59DF181287A4A660060AABD /* IosLocationProvider.swift in Sources */,
 				2152FB042600AC8F00CF470E /* HomieApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 			);
