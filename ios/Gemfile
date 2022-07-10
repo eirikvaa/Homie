@@ -3,4 +3,4 @@ source 'https://rubygems.org'
 # Read about this technique: https://andycroll.com/ruby/read-ruby-version-in-your-gemfile/
 ruby "#{File.read('.ruby-version').strip}"
 
-gem 'fastlane', '2.204.3'
+gem 'fastlane', '2.207.0'
