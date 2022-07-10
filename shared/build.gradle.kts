@@ -42,6 +42,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-android:2.0.0-beta-1")
+                implementation("com.google.android.gms:play-services-location:19.0.1")
             }
         }
         val androidTest by getting {
